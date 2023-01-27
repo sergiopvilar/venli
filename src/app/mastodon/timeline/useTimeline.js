@@ -6,7 +6,7 @@ import useExtraFields from './useExtraFields'
 export default async function useTimeline(window, timeline = 'home') {
   const masto = await useLogin()
   const stream = await useStream(timeline, masto)
-  const onUpdate = await useUpdate(timeline, masto)
+  const onUpdate = useUpdate(timeline, masto)
   const items = []
 
   let index = 0

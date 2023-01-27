@@ -1,4 +1,4 @@
-export default async function useUpdate(timeline, masto) {
+export default function useUpdate(timeline, masto) {
   const limit = 30
 
   const update = async () => {
