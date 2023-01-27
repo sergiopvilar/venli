@@ -16,8 +16,5 @@ export default async function useUpdate(timeline, masto) {
     }, (3 * 60 * 1000));
   }
 
-  return {
-    onUpdate: onUpdate
-  }
-
+  return onUpdate
 }

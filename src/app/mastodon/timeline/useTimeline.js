@@ -1,15 +1,12 @@
-import Config from '../../db/config'
-
 import useLogin from '../useLogin'
 import useStream from './useStream'
 import useUpdate from './useUpdate'
 import useExtraFields from './useExtraFields'
 
 export default async function useTimeline(window, timeline = 'home') {
-  const data = new Config().data()
-  const masto = await useLogin(data)
+  const masto = await useLogin()
   const stream = await useStream(timeline, masto)
-  const { onUpdate } = await useUpdate(timeline, masto)
+  const onUpdate = await useUpdate(timeline, masto)
   const items = []
 
   let index = 0
