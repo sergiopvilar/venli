@@ -9,14 +9,14 @@ export default async function useUpdate(timeline, masto) {
     return result
   }
 
-  const onUpdate = (callback) => {
+  const onUpdate = async (callback) => {
+    callback(await update())
     setInterval(async () => {
       callback(await update())
     }, (3 * 60 * 1000));
   }
 
   return {
-    firstLoad: await update(),
     onUpdate: onUpdate
   }
 
