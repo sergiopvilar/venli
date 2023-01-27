@@ -16,7 +16,6 @@ export default async function useUpdate(timeline, masto) {
   }
 
   return {
-    limit: limit,
     firstLoad: await update(),
     onUpdate: onUpdate
   }
