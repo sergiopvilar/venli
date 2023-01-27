@@ -16,8 +16,8 @@ contextBridge.exposeInMainWorld(
     authenticateCode: (instance, code) => {
       ipcRenderer.send('authenticate-code', instance, code)
     },
-    onUpdateTimeline: (callback) => {
-      ipcRenderer.on('timeline-update', callback)
+    onUpdateTimeline: (timeline, callback) => {
+      ipcRenderer.on(`timeline-update-${timeline}`, callback)
     }
   }
 )
