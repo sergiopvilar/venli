@@ -5,7 +5,7 @@ import useExtraFields from './useExtraFields'
 
 export default async function useTimeline(window, timeline = 'home') {
   const masto = await useLogin()
-  const stream = await useStream(timeline, masto)
+  const onStream = useStream(timeline, masto)
   const onUpdate = useUpdate(timeline, masto)
   const items = []
 
@@ -28,6 +28,6 @@ export default async function useTimeline(window, timeline = 'home') {
     window.webContents.send(`timeline-update-${timeline}`, status)
   }
 
-  stream.on('update', (status) => pushStatus(status))
+  onStream((status) => pushStatus(status))
   onUpdate((items) => pushBatch(items.reverse()))
 }
